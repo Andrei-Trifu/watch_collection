@@ -22,7 +22,7 @@ $watches = $watchesModel->getAllWatches();
     <link rel="stylesheet" href="resources/css/normalize.css">
     <link rel="stylesheet" href="./css/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,900;1,100;1,300;1,400&family=Tilt+Neon&display=swap" rel="stylesheet">
-    <link rel="icon" href="/img/icon.webp">
+    <link rel="icon" href="img/icon.webp">
     <title>Watch collection</title>
 
 </head>
