@@ -3,14 +3,6 @@
   margin: 0;
 }
 
-body {
-  font-family: "Roboto", sans-serif;
-}
-
-.overflow {
-  overflow: hidden;
-}
-
 .watch {
   width: 450px;
   height: 450px;
@@ -21,6 +13,7 @@ body {
   width: 100%;
   height: 100%;
 }
+
 .watch-heading {
   font-family: "Lobster", sans-serif;
   font-size: 3rem;
@@ -112,5 +105,5 @@ body {
 
 .watch-brand {
   padding: 10px 10px;
-  font-size: 2.07rem;
+  font-size: 2.5rem;
 }
