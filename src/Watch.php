@@ -2,19 +2,21 @@
 
 class Watch
 {
-public int $id;
-public string $brand;
-public string $model_name;
-public string $dial_colour;
-public string $watch_type;
+    public int $id;
+    public string $brand;
+    public string $model_name;
+    public string $dial_colour;
+    public string $watch_type;
 
-public function __construct(
+    public function __construct
+    (
     int $id,
     string $brand,
     string $model_name,
     string $dial_colour,
     string $watch_type
-) {
+    ) 
+{
     $this->id=$id;
     $this->brand=$brand;
     $this->model_name=$model_name;
