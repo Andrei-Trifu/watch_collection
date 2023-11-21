@@ -4,11 +4,13 @@ require_once 'src/Watch.php';
 require_once 'src/WatchModel.php';
 require_once 'src/WatchViewHelper.php';
 
+
 $db = new PDO('mysql:host=db; dbname=watch_collection', 'root', 'password');
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 $watchesModel = new WatchModel($db);
 $watches = $watchesModel->getAllWatches();
+
 
 
 ?>

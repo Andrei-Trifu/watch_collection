@@ -2,6 +2,7 @@
 
 require_once 'src/Watch.php';
 
+
 class WatchViewHelper
 {
     public static function displayAllWatches(array $watches): string
