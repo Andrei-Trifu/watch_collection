@@ -41,7 +41,7 @@ class WatchModel
         return $watchObjs;
     }
 
-    public function saveNewWatchType($brand ,$dial_colour, $model_name, $movement)
+    public function saveNewWatchType(string $brand ,string $dial_colour, string $model_name,  string $movement) : bool
     {
         $query = $this->db->prepare('SELECT `id` FROM `type` WHERE `movement` = ?;');
         $query->execute([$movement]);
