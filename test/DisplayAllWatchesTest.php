@@ -13,7 +13,7 @@ class DisplayAllWatchesTest extends TestCase
     {
         $input = [new Watch(1,'Seiko','Samurai','Black', 'Automatic')];
 
-        $expected = "<div class='watch-card'><p class='watch-brand'>Seiko</p><p>Model: Samurai</p><br><p>Dial colour: Black</p><br><p>Movement: Automatic</p></div>";
+        $expected = "<div class='watch-card'><p class='watch-brand'>Seiko</p><p>Model: Samurai</p><br><p>Dial colour: Black</p><br><p>Movement: Automatic</p><button class='delete-button'>Delete</button><button class='edit-button'>Edit</button></div>";
          $result =  WatchViewHelper::displayAllWatches($input);
          $this->assertEquals($expected, $result);
     }

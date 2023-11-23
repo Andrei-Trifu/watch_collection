@@ -1,6 +1,11 @@
 <?php
+include './WatchModel.php';
+
 $results=false;
 $errors=[];
+
+$db = new PDO('mysql:host=db; dbname=watch_collection', 'root', 'password');
+$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
 if (
     isset($_POST['brand']) && 
@@ -26,28 +31,15 @@ if (
     if (empty($model_name)) {
         $errors['model_name'] = '*Model name is required!';
     }
-    if (empty($errors)) 
-    {
-    $db = new PDO('mysql:host=db; dbname=watch_collection', 'root', 'password');
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC); 
 
-    $query = $db->prepare('SELECT `id` FROM `type` WHERE `movement` = ?;');
-    $query->execute([$movement]);
-    $new_watch= $query->fetch();
-
-    $query = $db->prepare(
-        'INSERT INTO `watch` 
-            (`brand`, `model_name`, `dial_colour`, `watch_type`)
-            VALUES (:brand, :model_name, :dial_colour, :watch_type);'
-        );
-        
-    $results =  $query->execute([
-        ':brand' => $brand,
-        ':dial_colour' => $dial_colour,
-        ':watch_type' => $new_watch['id'],
-        ':model_name' => $model_name,
-    ]);
-}
+    if (empty($errors)) {
+        $addNewWatch = new WatchModel($db);
+        $addNewWatch->saveNewWatchType($brand ,$dial_colour, $model_name, $movement);
+        $brand = '';
+        $movement = '';
+        $dial_colour = '';
+        $model_name = '';
+    }
 }
 ?>
 
@@ -73,10 +65,10 @@ if (
         <section id="form-section" class="form-section">
             <form action="form.php" method="POST">
                 <label>Brand name: </label>
-                <input class="brand_name" type="text" name="brand" value="<?php echo ($_POST['brand'] ?? '')?>">
+                <input class="brand_name" type="text" name="brand" value="<?php echo ($brand ?? '')?>">
                 <div class="error"><?php echo $errors['brand'] ?? ''?></div>
                 <label>Movement type: </label>
-                <select name="movement" id="movement" value="<?php echo ($_POST['movement'] ?? '')?>">
+                <select name="movement" id="movement" value="<?php echo ($movement ?? '')?>">
                     <option></option>
                     <option>Automatic</option>
                     <option>Quartz</option>
@@ -85,14 +77,14 @@ if (
                 </select>
                 <div class="error"><?php echo $errors['movement'] ?? '' ?></div>
                 <label>Dial colour: </label>
-                <input type="text"  name="dial_colour" value="<?php echo ($_POST['dial_colour'] ?? '')?>">
+                <input type="text"  name="dial_colour" value="<?php echo ($dial_colour ?? '')?>">
                 <div class="error"><?php echo $errors['dial_colour'] ?? '' ?></div>
                 <label>Model name: </label>
-                <input type="model"  name="model_name" value="<?php echo ($_POST['model_name'] ?? '')?>">
+                <input type="model"  name="model_name" value="<?php echo ($model_name ?? '')?>">
                 <div class="error"><?php echo $errors['model_name'] ?? '' ?></div>
                 <input class="button" type="submit" name="submit" value="Add">
                 
-                <?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && $results) : ?>
+                <?php if ($_SERVER['REQUEST_METHOD'] == 'POST' && !$errors) : ?>
                     <div class="success-message">New watch added!<br>
                         <a href="../index.php" class="button">Home page</a>
                     </div>

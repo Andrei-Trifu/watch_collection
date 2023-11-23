@@ -1,9 +1,7 @@
 <?php
 
-require_once 'src/Watch.php';
 require_once 'src/WatchModel.php';
 require_once 'src/WatchViewHelper.php';
-
 
 $db = new PDO('mysql:host=db; dbname=watch_collection', 'root', 'password');
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
@@ -11,7 +9,11 @@ $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 $watchesModel = new WatchModel($db);
 $watches = $watchesModel->getAllWatches();
 
-
+if(isset($_POST['watch_id'])) {
+    $watch = new WatchModel($db);
+    $watch->restoreWatches($_POST['watch_id']);
+    $watches = $watch->getAllWatches(0);
+}
 
 ?>
 
