@@ -7,12 +7,13 @@ require_once __DIR__ . "/WatchViewHelper.php";
 $db = new PDO('mysql:host=db; dbname=watch_collection', 'root', 'password');
 $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
 
+$watch = new WatchModel($db);
 
-if(isset($_POST['watch_id'])) {
-    $watch = new WatchModel($db);
+if(isset($_POST['watch_id'])) { 
     $watch->deleteWatches($_POST['watch_id']);
-    $watches = $watch->getAllWatches(1);
 }
+
+$watches = $watch->getAllWatches(1);
 
 ?>
 
@@ -39,14 +40,11 @@ if(isset($_POST['watch_id'])) {
             ?>
         </section>
 
-        <div>
-            <?php
-            if ($_SERVER['REQUEST_METHOD'] == 'POST') : ?>
-                <div class="home-restore">
-                    <a href="../index.php" class="button">Home page</a>
-                </div>
-            <?php endif; ?>
+      
+        <div class="home-restore">
+             <a href="../index.php" class="button">Home page</a>
         </div>
+        
   </section>
 </body>
 </html>

@@ -11,7 +11,7 @@ $watch = new WatchModel($db);
 if(isset($_POST['watch_id'])) {
     $watch->restoreWatches($_POST['watch_id']);
 }
-
+    
 $watches = $watch->getAllWatches();
 
 ?>
@@ -38,6 +38,7 @@ $watches = $watch->getAllWatches();
         <div class="more-watches">
             <p class="add_button">Click here to add a new watch to the collection</p>
             <a href="src/Form.php" class="button"><span>Add</span></a>
+            <a href="src/Delete.php" class="button"><span>Deleted</span></a>
         </div>
     </section>
    

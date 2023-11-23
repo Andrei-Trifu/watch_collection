@@ -16,14 +16,19 @@ class WatchViewHelper
             $output .= "<p>Model: $watch->model_name</p><br>";
             $output .= "<p>Dial colour: $watch->dial_colour</p><br>";
             $output .= "<p>Movement: $watch->watch_type</p>";
+            $output .= "<section class='form-container'>";
             $output .= "<form method='post' action='src/delete.php'>";
             $output .= "<input type='hidden' name='watch_id' value='$watch->id'>";
             $output .= "<button type='submit' class='delete-button'>Delete</button>";
+            $output .= "</form>";
+            $output .= "<form method='post' action='src/edit.php'>";
+            $output .= "<input type='hidden' name='watch_id' value='$watch->id'>";
             $output .= "<button class='edit-button'>Edit</button>";
             $output .= "</form>";
+            $output .="</section>";
             $output .= "</div>";
             }
-
+            
         return $output;
     } 
 

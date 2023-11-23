@@ -124,3 +124,8 @@
 .home-restore {
   text-align: center;
 }
+
+.form-container {
+  display: flex;
+  justify-content: center;
+}
