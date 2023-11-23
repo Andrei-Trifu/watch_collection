@@ -1,0 +1,51 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+}
+
+form input {
+  border-radius: 5px;
+  border: 1px solid #d75b38a8;
+  width: 330px;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+form label {
+  color: #474545;
+  font-size: 1.2rem;
+  margin-bottom: -20px;
+}
+
+form select {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #d75b38a8;
+  width: 332px;
+  padding: 15px;
+}
+
+.success-message {
+  font-size: 2rem;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.error {
+  margin-top: 0;
+  color: #ff0000ff;
+  font-weight: 200;
+  font-size: 0.9rem;
+  margin-top: -20px;
+}

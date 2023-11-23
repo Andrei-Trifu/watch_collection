@@ -92,12 +92,18 @@
     #f58181
   );
   width: 280px;
-  height: 180px;
+  height: 210px;
   transition: 0.25s;
   -webkit-box-shadow: 5px 5px 15px 2px #5b5b5b44;
   box-shadow: 5px 5px 15px 2px #5b5b5b44;
   margin-left: 35px;
   margin-top: 70px;
+}
+
+.watch-collection button {
+  border-radius: 10px;
+  padding: 5px;
+  margin: 12px 15px;
 }
 
 .watch-collection div:hover {
@@ -113,4 +119,8 @@
   color: red;
   font-weight: bold;
   font-size: larger;
+}
+
+.home-restore {
+  text-align: center;
 }
